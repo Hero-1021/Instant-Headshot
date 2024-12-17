@@ -1,6 +1,4 @@
-# AI Image Generator 🔥
-
-## Text to image Generator with DALL·E 2
+# Instant Headshot Generator(Astria.ai) 🔥
 
 <p align="center">
     <img src="https://s12.gifyu.com/images/ezgif.com-optimize1442d3fee1d7b4bc.gif"></img>
@@ -10,29 +8,25 @@
 
 ## Live 🚀
 
-[image-generator.dhavalcode.com](https://image-generator.dhavalcode.com)
+[image-generator.dhavalcode.com](https://instantheadshots.ai)
 
 ## Technologies Used 🖥️
 
 - [Typescript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
 - [Node Js](https://nodejs.org/en)
-- [Mongoose Js](https://mongoosejs.com/)
+- [Supabase](https://Supabase.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Vite Js](https://vitejs.dev)
-- [Open AI](https://openai.com/)
-- [Cloudinary](https://cloudinary.com/)
+- [Astria AI](https://Astria.com/)
 
 ## Getting Started
 
 ```bash
 # Clone this repository
-git clone https://github.com/dhavalCode/ai-image-generator.git
+git clone https://github.com/Hero-1021/Instant-Headshot.git
 
 # Go into the repository
-cd ai-image-generator
-
-# Setup default environment variables
+cd Instant-Headshot
 
 # For Linux
 cp env.example .env.local
@@ -51,7 +45,7 @@ npm start
 - Create ENV File
 
 ```bash
-- ai-image-generator
+- Instant-Headshot
   - server
     - node_modules
     - public
@@ -65,19 +59,12 @@ npm start
 
 ```env
 // .env
-MONGODB_URL= "Replace with your url"
-OPEN_AI_KEY=  "Replace with your key"
-CLOUDINARY_CLOUD_NAME= "Replace with yours"
-CLOUDINARY_API_KEY= "Your api key"
-CLOUDINARY_API_SECRET= "Your app secret key"
+ASTRIA_AI_API_KEY=  "Replace with your key"
+PORT=5000
+SUPABASE_URL= "Replace with your Supabase url"
+SUPABASE_KEY= "Replace with your Supabase key"
 ```
 
 ## For the Future
 
-If you want to add more, Please don't hesitate to open a [pull request](https://github.com/dhavalCode/ai-image-generator/pulls).
-
-## 👋 Get in Touch
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/dhavalcode?style=social)](https://twitter.com/dhavalCode)
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dhavalcode)
+If you want to add more, Please don't hesitate to open a [pull request](https://github.com/Hero-1021/Instant-Headshot/pulls).

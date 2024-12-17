@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import dbConnect from './config/dbConnect'; // Import your database connection file
 import dotenv from 'dotenv';
 import {imageRouter} from "./routes/image.route"
 const cors = require('cors');
@@ -32,7 +31,6 @@ app.use((err: any, req: Request, res: Response, next: any) => {
 // Start the server and connect to the database
 app.listen(PORT, async () => {
   try {
-    await dbConnect();  // Establish the database connection
     console.log(`Server is running on port ${PORT}`);
   } catch (error) {
     console.error('Error connecting to the database:', error);
