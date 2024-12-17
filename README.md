@@ -8,7 +8,7 @@
 
 ## Live 🚀
 
-[image-generator.dhavalcode.com](https://instantheadshots.ai)
+[instantheadshots.ai](https://instantheadshots.ai)
 
 ## Technologies Used 🖥️
 

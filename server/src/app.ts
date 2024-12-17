@@ -17,18 +17,15 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.use('/api', imageRouter)
-// 404 handler
 app.use((req: Request, res: Response) => {
   res.status(404).json({ error: 'Not Found' });
 });
 
-// Global error handler
 app.use((err: any, req: Request, res: Response, next: any) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-// Start the server and connect to the database
 app.listen(PORT, async () => {
   try {
     console.log(`Server is running on port ${PORT}`);
