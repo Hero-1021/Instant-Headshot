@@ -1,11 +1,6 @@
 type EnvConfig = {
     databaseUrl: string
-    openAiKey: string
-    cloudinary: {
-        name: string
-        apiKey: string
-        apiSecret: string
-    }
+    deepAiKey: string
 }
 
 

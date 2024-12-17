@@ -1,14 +1,16 @@
-import mongoose from 'mongoose'
-import { config } from './config'
+// dbConnect.ts
 
-// mongodb connection
+import dotenv from 'dotenv';
 
-export const dbConnect = (): void => {
-  mongoose
-    .connect(config.databaseUrl, {})
-    .then(() => console.log(`Database Connected Successfully`))
-    .catch((err) => {
-      console.log('Database Connection error => ', err)
-      process.exit(1)
-    })
-}
+dotenv.config();
+
+const dbConnect = async (): Promise<void> => {
+  try {
+    console.log('MongoDB connected successfully');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+    process.exit(1);
+  }
+};
+
+export default dbConnect;

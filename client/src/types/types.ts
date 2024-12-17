@@ -1,12 +1,10 @@
-export interface ImageModalState {
-    imgSrc: string | null
-    open: boolean
-    prompt: string
+export interface Image {
+    url: string;
+    prompt: string;
 }
 
-export type Image = {
-    _id: string
-    prompt: string
-    imageUrl: string
-    createdAt : string
+export interface NavLinkProps {
+    label: string;
+    href: string;
+    isActive?: boolean;
 }

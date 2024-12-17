@@ -1,67 +1,21 @@
-import EnvConfig from '../types/EnvConfig'
-import Joi from 'joi'
-import { config as cfg } from 'dotenv'
-import path from 'path'
-import { Configuration, OpenAIApi } from 'openai';
-import { v2 as cloudinarySetup } from 'cloudinary';
+import * as dotenv from 'dotenv';
 
+// Load environment variables from .env
+dotenv.config();
 
-cfg({ path: path.join(__dirname, '../../.env') })
-
-
-const envVarsSchema = Joi.object()
-    .keys({
-        MONGODB_URL: Joi.string().required().messages({ 'any.required': 'Provide Mongodb Url.' }),
-        OPEN_AI_KEY: Joi.string().required().messages({ 'any.required': 'Provide OpenAI key.' }),
-        CLOUDINARY_CLOUD_NAME: Joi.string().required().messages({ 'any.required': 'Provide cloudinary cloud name.' }),
-        CLOUDINARY_API_KEY: Joi.string().required().messages({ 'any.required': 'Provide cloudinary api key.' }),
-        CLOUDINARY_API_SECRET: Joi.string().required().messages({ 'any.required': 'Provide cloudinary api secret.' }),
-    })
-    .unknown()
-
-const { value: envVars, error } = envVarsSchema
-    .prefs({ errors: { label: 'key' } })
-    .validate(process.env)
-
-if (error) {
-    throw new Error(`### ENV Setup Error ####\n ${error.message}`)
+interface Config {
+  ASTRIA_AI_API_KEY: string; // Your DeepAI API Key
+  BASE_URL: string;        // DeepAI API Base URL
 }
 
+const config: Config = {
+  ASTRIA_AI_API_KEY: process.env.ASTRIA_AI_API_KEY || '',
+  BASE_URL: 'https://api.astria.ai',
+};
 
-export const config: EnvConfig = {
-    databaseUrl: envVars.MONGODB_URL,
-    openAiKey: envVars.OPEN_AI_KEY,
-    cloudinary: {
-        name: envVars.CLOUDINARY_CLOUD_NAME,
-        apiKey: envVars.CLOUDINARY_API_KEY,
-        apiSecret: envVars.CLOUDINARY_API_SECRET
-    }
+// Check if the API key is missing
+if (!config.ASTRIA_AI_API_KEY) {
+  console.error('Error: ASTRIA_AI_API_KEY is not defined. Please check your .env file.');
 }
 
-export const validateEnv = (): void => {
-    const { error } = envVarsSchema
-        .prefs({ errors: { label: 'key' } })
-        .validate(process.env)
-
-    if (error) {
-        throw new Error(`### ENV Setup Error ####\n ${error.message}`)
-    }
-}
-
-// Open AI Setup
-
-const configuration = new Configuration({
-    apiKey: config.openAiKey,
-});
-
-export const openai = new OpenAIApi(configuration);
-
-// Cloudinary Setup
-
-cloudinarySetup.config({
-    cloud_name: config.cloudinary.name,
-    api_key: config.cloudinary.apiKey,
-    api_secret: config.cloudinary.apiSecret,
-});
-
-export const cloudinary = cloudinarySetup
+export default config;

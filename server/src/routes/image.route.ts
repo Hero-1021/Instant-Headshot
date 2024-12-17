@@ -1,10 +1,7 @@
 import { Router } from 'express'
-import {
-  fetchAllImages, generateImage
-} from '../controller/image.controller'
+import {text2img} from '../controller/image.controller'
 
 export const imageRouter = Router()
 
-imageRouter.get('/all', fetchAllImages)
+imageRouter.post('/text2img', text2img)
 
-imageRouter.post('/generate', generateImage)

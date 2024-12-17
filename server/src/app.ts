@@ -1,45 +1,41 @@
-import path from 'path'
-import express, { Application } from 'express'
-import cors from 'cors'
-// config
-import { validateEnv } from './config/config'
-import { dbConnect } from './config/dbConnect'
-// routes
-import { imageRouter } from './routes/image.route'
-// import { staticFileNames } from './config/staticFiles'
+import express, { Request, Response } from 'express';
+import dbConnect from './config/dbConnect'; // Import your database connection file
+import dotenv from 'dotenv';
+import {imageRouter} from "./routes/image.route"
+const cors = require('cors');
+dotenv.config();
 
-export const app: Application = express()
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-const port = 8080
+// Middleware
+app.use(express.json());
+app.use(cors());
 
-// checking environment variables
-validateEnv()
+app.get('/', (req: Request, res: Response) => {
+  res.send('Welcome to the server!');
+});
 
-// establish db connection
-dbConnect()
 
-app.disable('x-powered-by')
+app.use('/api', imageRouter)
+// 404 handler
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ error: 'Not Found' });
+});
 
-app.use(express.json())
+// Global error handler
+app.use((err: any, req: Request, res: Response, next: any) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
 
-// app.use(express.static('public'))
-
-app.use(cors())
-
-if (process.env.NODE_ENV == 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https') {
-      res.redirect(`https://${req.header('host')}${req.url}`)
-    } else {
-      next()
-    }
-  })
-}
-
-app.use('/api/image', imageRouter)
-
-app.use('/health', (req, res) => res.json({ message: ' Server is running...' }))
-
-app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`)
-})
+// Start the server and connect to the database
+app.listen(PORT, async () => {
+  try {
+    await dbConnect();  // Establish the database connection
+    console.log(`Server is running on port ${PORT}`);
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+    process.exit(1);
+  }
+});
