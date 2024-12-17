@@ -25,7 +25,7 @@ function Header() {
       {/* Logo Section */}
       <div className="flex items-center space-x-4">
         <a href="/" className="flex items-center space-x-2">
-          <img src="/src/assets/logo1.png" alt={COMPANY_NAME} className="h-1/3" />
+          <img src="/images/logo1.png" alt={COMPANY_NAME} className="h-1/3" />
         </a>
       </div>
 

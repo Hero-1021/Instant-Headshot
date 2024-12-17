@@ -6,22 +6,22 @@ export interface Logo {
   export const logos: Logo[] = [
     {
       name: 'Netskope',
-      src: '/src/assets/netskope.svg'
+      src: '/images/netskope.svg'
     },
     {
       name: 'Attentive',
-      src: '/src/assets/attentive.png'
+      src: '/images/attentive.png'
     },
     {
       name: 'Workato',
-      src: '/src/assets/workato.png'
+      src: '/images/workato.png'
     },
     {
       name: 'Exabeam',
-      src: '/src/assets/exabeam.png'
+      src: '/images/exabeam.png'
     },
     {
       name: 'Airwallex',
-      src: '/src/assets/airwallex.png'
+      src: '/images/airwallex.png'
     }
   ];
