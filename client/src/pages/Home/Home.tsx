@@ -22,7 +22,6 @@ function Home() {
     const [goTop, setGoTop] = useState(false);
 
     const [inputText, setInputText] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
 
     const generateImage = async () => {
         imageService.generateImage({inputText});
@@ -168,10 +167,10 @@ function Home() {
                 </div>
             </div>
 
-            <div>
+            {/* <div>
                 <h3>Generated Image:</h3>
                 <img src={imageUrl} alt="Generated Headshot" style={{ width: '300px', borderRadius: '10px' }} />
-            </div>
+            </div> */}
 
             <div>
                 {goTop && (
